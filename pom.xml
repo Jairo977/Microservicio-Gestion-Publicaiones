@@ -13,6 +13,7 @@
         <module>api-publicaciones</module>
         <module>ms-eureka-server</module>
         <module>ms-api-gateway</module>
+        <module>openai</module>
     </modules>
 
 </project>
