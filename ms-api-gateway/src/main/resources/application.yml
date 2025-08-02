@@ -23,6 +23,12 @@ spring:
                 - Path=/api/v1/libros/**
               filters:
                 - StripPrefix=2
+            - id: servicio-notificaciones
+              uri: lb://servicio-notificaciones
+              predicates:
+                - Path=/api/v1/notificaciones/**
+              filters:
+                - StripPrefix=2
 
 
 eureka:

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import publicaciones.dto.AutorDto;
 import publicaciones.dto.ResponseDto;
 import publicaciones.model.Autor;
+import publicaciones.producer.NotificacionProducer;
 import publicaciones.repository.AutorRepository;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class AutorService {
     @Autowired
     private AutorRepository autorRepository;
 
+    @Autowired
+    private NotificacionProducer notificacionProducer;
+
     //create
     public ResponseDto crearAutor(AutorDto dto) {
         Autor autor = new Autor();
@@ -27,6 +31,12 @@ public class AutorService {
         autor.setNacionalidad(dto.getNacionalidad());
         autor.setInstitucion(dto.getInstitucion());
         autor.setOrcid(dto.getOrcid());
+
+        notificacionProducer.enviarNotificacion(
+                "Nuevo autor registrado"+dto.getNombre(),
+                "nuevo autor"
+        );
+
         return new ResponseDto(
                 "Autor registrado exitosamente",
                 autorRepository.save(autor));

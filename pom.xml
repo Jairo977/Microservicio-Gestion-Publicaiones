@@ -14,6 +14,8 @@
         <module>ms-eureka-server</module>
         <module>ms-api-gateway</module>
         <module>openai</module>
+        <module>ms-notificaciones</module>
+        <module>ms-auth</module>
     </modules>
 
 </project>

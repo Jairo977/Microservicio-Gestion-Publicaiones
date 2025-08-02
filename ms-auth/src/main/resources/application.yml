@@ -3,12 +3,12 @@ server:
 
 spring:
   application:
-    name: servicio-publicaciones
+    name: ms-auth
   datasource:
-    #url: jdbc:postgresql://localhost:5432/publicaciones_db
+    #url: jdbc:postgresql://localhost:5432/auth_db
     #username: postgres
     #password: qwerty123
-    url: jdbc:postgresql://localhost:26257/publicaciones_db?user=root&password=
+    url: jdbc:postgresql://localhost:26257/auth_db?user=root&password=
     username: root
     password:
   jpa:
@@ -20,13 +20,6 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: admin
-    password: admin
-
-
 eureka:
   client:
     register-with-eureka: true
@@ -37,13 +30,6 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${random.value}
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,gateway
-
-logging:
-  level:
-    org.springframework.cloud.gateway: TRACE
-    org.springframework.web: TRACE
+jwt:
+  secret: mysecretkey
+  expiration: 3600 # in seconds

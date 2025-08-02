@@ -6,6 +6,7 @@ import publicaciones.dto.LibroDto;
 import publicaciones.dto.ResponseDto;
 import publicaciones.model.Autor;
 import publicaciones.model.Libro;
+import publicaciones.producer.NotificacionProducer;
 import publicaciones.repository.AutorRepository;
 import publicaciones.repository.LibroRepository;
 
@@ -20,6 +21,9 @@ public class LibroService {
     @Autowired
     private AutorRepository autorRepository;
 
+    @Autowired
+    private NotificacionProducer notificacionProducer;
+
     public ResponseDto crearLibro(LibroDto dto) {
         Autor autor = autorRepository.findById(dto.getAutorId())
                 .orElseThrow(() -> new RuntimeException("No existe el autor con id: " + dto.getAutorId()));
@@ -32,9 +36,17 @@ public class LibroService {
         libro.setEditorial(dto.getEditorial());
         libro.setAnioPublicacion(dto.getAnioPublicacion());
         libro.setResumen(dto.getResumen());
+
+        Libro savedLibro = libroRepository.save(libro);
+
+        notificacionProducer.enviarNotificacion(
+                "Libro: "+dto.getTitulo()+" registrado",
+                "Nuevo Libro"
+        );
+
         return new ResponseDto(
                 "Libro registrado exitosamente",
-                libroRepository.save(libro));
+                savedLibro);
     }
 
     public List<Libro> listarLibros() {
