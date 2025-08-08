@@ -1,19 +1,16 @@
 server:
-  port: 0
+  port: 12480
 
 spring:
   application:
     name: ms-auth
   datasource:
-    #url: jdbc:postgresql://localhost:5432/auth_db
-    #username: postgres
-    #password: qwerty123
-    url: jdbc:postgresql://localhost:26257/auth_db?user=root&password=
+    url: jdbc:postgresql://localhost:26257/auth_db?sslmode=disable
     username: root
     password:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true

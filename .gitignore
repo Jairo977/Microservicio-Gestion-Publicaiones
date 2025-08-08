@@ -1,33 +1,30 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Node.js
+node_modules/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+dist/
 
-### VS Code ###
+# Java/Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDEs
+.idea/
 .vscode/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Otros
+.env
+
+# Logs
+*.log
+
+# BPMN modeler
+*.bpmn.backup
+
