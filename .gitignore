@@ -21,10 +21,10 @@ Thumbs.db
 
 # Otros
 .env
+openai/
 
 # Logs
 *.log
 
 # BPMN modeler
 *.bpmn.backup
-
